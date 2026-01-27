@@ -17,7 +17,7 @@ public class Saab95{
         modelName = "Saab95";
         stopEngine();
     }
-    
+
     public int getNrDoors(){
         return nrDoors;
     }
@@ -77,3 +77,5 @@ public class Saab95{
         decrementSpeed(amount);
     }
 }
+
+//hej
