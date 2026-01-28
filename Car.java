@@ -15,6 +15,17 @@ public class Car implements Movable{
         this.y = y;
         this.direction = direction;
     }
+    public double getX(){
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
 
     public int getNrDoors(){
 
@@ -54,14 +65,14 @@ public class Car implements Movable{
     @Override
     public void move() {
         if (direction == 0){
-            y = y - currentSpeed;
+            y = y - getCurrentSpeed();
         } else if (direction == 1) {
             x = x+ currentSpeed;
         } else if (direction==2) {
             y = y + currentSpeed;
-        }else if (direction == 3);
+        }else if (direction == 3){
             x = x-currentSpeed;
-    }
+    }}
 
     @Override
     public void turnLeft() {
