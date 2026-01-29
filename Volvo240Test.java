@@ -24,11 +24,22 @@ class Volvo240Test {
 
     @Test
     void incrementSpeed() {
-
+        defaultVolvo.startEngine();
+        defaultVolvo.incrementSpeed(2);
+        assertEquals(2.6,defaultVolvo.getCurrentSpeed());
+        defaultVolvo.incrementSpeed(200);
+        assertEquals(defaultVolvo.enginePower,defaultVolvo.getCurrentSpeed());
     }
 
     @Test
     void decrementSpeed() {
+        defaultVolvo.startEngine();
+        defaultVolvo.decrementSpeed(2);
+        assertEquals(0,defaultVolvo.getCurrentSpeed());
+        defaultVolvo.incrementSpeed(200);
+        defaultVolvo.decrementSpeed(2);
+        assertEquals(97.5,defaultVolvo.getCurrentSpeed());
+
     }
 
     @Test
@@ -140,10 +151,27 @@ class Volvo240Test {
 
     @Test
     void gas() {
+        defaultVolvo.startEngine();
+        defaultVolvo.gas(2);
+        assertEquals(0.1,defaultVolvo.getCurrentSpeed());
+
+        double speed = defaultVolvo.getCurrentSpeed();
+        defaultVolvo.gas(0.34);
+        assertTrue(speed<defaultVolvo.getCurrentSpeed());
+
     }
+
 
     @Test
     void brake() {
+        defaultVolvo.startEngine();
+        defaultVolvo.brake(-2);
+        assertEquals(0.1, defaultVolvo.getCurrentSpeed());
+
+        double speed = defaultVolvo.getCurrentSpeed();
+
+        defaultVolvo.brake(0.6);
+        assertTrue(speed>defaultVolvo.getCurrentSpeed());
     }
 
 }

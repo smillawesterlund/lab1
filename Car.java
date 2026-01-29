@@ -18,11 +18,21 @@ public abstract class Car implements Movable{
     public abstract double speedFactor();
 
     public void incrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+
+        currentSpeed = currentSpeed + speedFactor() * amount;
+
+        if (currentSpeed > enginePower) {
+            currentSpeed = enginePower;
+        }
     }
 
     public void decrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+
+        currentSpeed = currentSpeed - speedFactor() * amount;
+
+        if (currentSpeed < 0) {
+            currentSpeed = 0;
+        }
     }
 
     public double getX(){return x;}
@@ -68,13 +78,20 @@ public abstract class Car implements Movable{
         direction = (direction + 1 + 4) % 4;
     }
 
-    // TODO fix this method according to lab pm
     public void gas(double amount){
+        if (amount < 0 || amount > 1) {
+            //returnar inget
+            return;
+        }
         incrementSpeed(amount);
-    }
+        }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount){
+        if (amount < 0 || amount > 1) {
+            //returnar inget
+            return;
+        }
         decrementSpeed(amount);
+
     }
 }
