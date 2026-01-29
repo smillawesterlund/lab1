@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Car implements Movable{
+public abstract class Car implements Movable{
 
     private double x,y;
     private  int direction;
@@ -15,51 +15,35 @@ public class Car implements Movable{
         this.y = y;
         this.direction = direction;
     }
-    public double getX(){
-        return x;
+    public abstract double speedFactor();
+
+    public void incrementSpeed(double amount){
+        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
     }
 
-    public double getY() {
-        return y;
+    public void decrementSpeed(double amount){
+        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 
-    public int getDirection() {
-        return direction;
-    }
+    public double getX(){return x;}
 
-    public int getNrDoors(){
+    public double getY() {return y;}
 
-        return nrDoors;
-    }
-    public double getEnginePower(){
+    public int getDirection() {return direction;}
 
-        return enginePower;
-    }
+    public int getNrDoors(){return nrDoors;}
+    public double getEnginePower(){return enginePower;}
 
-    public double getCurrentSpeed(){
+    public double getCurrentSpeed(){return currentSpeed;}
 
-        return currentSpeed;
-    }
+    public Color getColor(){return color;}
 
-    public Color getColor(){
+    public void setColor(Color clr){color = clr;}
 
-        return color;
-    }
+    public void startEngine(){currentSpeed = 0.1;}
 
-    public void setColor(Color clr){
+    public void stopEngine(){currentSpeed = 0;}
 
-        color = clr;
-    }
-
-    public void startEngine(){
-
-        currentSpeed = 0.1;
-    }
-
-    public void stopEngine(){
-
-        currentSpeed = 0;
-    }
 // direcation kan vara 0,1,2,3 där 0 och 2 är uppåt respektive neråt, 3 och 1 är vänster respektive höger
 
     @Override
@@ -82,5 +66,15 @@ public class Car implements Movable{
     @Override
     public void turnRight() {
         direction = (direction + 1 + 4) % 4;
+    }
+
+    // TODO fix this method according to lab pm
+    public void gas(double amount){
+        incrementSpeed(amount);
+    }
+
+    // TODO fix this method according to lab pm
+    public void brake(double amount){
+        decrementSpeed(amount);
     }
 }
