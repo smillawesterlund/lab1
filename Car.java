@@ -54,7 +54,7 @@ public abstract class Car implements Movable{
 
     public void stopEngine(){currentSpeed = 0;}
 
-// direcation kan vara 0,1,2,3 där 0 och 2 är uppåt respektive neråt, 3 och 1 är vänster respektive höger
+// direction kan vara 0,1,2,3 där 0 och 2 är uppåt respektive neråt, 3 och 1 är vänster respektive höger
 
     @Override
     public void move() {
