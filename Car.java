@@ -4,10 +4,11 @@ public abstract class Car implements Movable{
 
     private double x,y;
     private  int direction;
-    protected int nrDoors; // Number of doors on the car
-    protected double enginePower; // Engine power of the car
-    protected double currentSpeed; // The current speed of the car
-    protected Color color; // Color of the car
+    private int nrDoors; // Number of doors on the car
+    private double enginePower; // Engine power of the car
+    private double currentSpeed; // The current speed of the car
+    private boolean isBigCar;
+    private Color color; // Color of the car
     public String modelName; // The car model name
 
     public Car(double x, double y, int direction){
@@ -15,6 +16,7 @@ public abstract class Car implements Movable{
         this.y = y;
         this.direction = direction;
     }
+
     public abstract double speedFactor();
 
     public void incrementSpeed(double amount){
@@ -35,6 +37,8 @@ public abstract class Car implements Movable{
         }
     }
 
+
+    // get-methods
     public double getX(){return x;}
 
     public double getY() {return y;}
@@ -42,17 +46,37 @@ public abstract class Car implements Movable{
     public int getDirection() {return direction;}
 
     public int getNrDoors(){return nrDoors;}
+
     public double getEnginePower(){return enginePower;}
 
     public double getCurrentSpeed(){return currentSpeed;}
 
     public Color getColor(){return color;}
 
+    public boolean getIsBigCar(){return isBigCar;}
+
+
+    // set-methods
+    public void setNrDoors(int nr){nrDoors = nr;}
+
+    public void setCurrentSpeed(double newSpeed){currentSpeed = newSpeed;}
+
     public void setColor(Color clr){color = clr;}
+
+    public void setIsBigCar(boolean isBigCar){this.isBigCar = isBigCar;}
+
+    public void setEnginePower(double enginePower){this.enginePower = enginePower;}
 
     public void startEngine(){currentSpeed = 0.1;}
 
     public void stopEngine(){currentSpeed = 0;}
+
+    public void setX(double newX){x = newX;}
+
+    public void setY(double newY){y = newY;}
+
+    public void setDirection(int newDirection){direction = newDirection;}
+
 
 // direction kan vara 0,1,2,3 där 0 och 2 är uppåt respektive neråt, 3 och 1 är vänster respektive höger
 

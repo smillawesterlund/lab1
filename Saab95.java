@@ -2,14 +2,15 @@ import java.awt.*;
 
 public class Saab95 extends Car{
 
-    protected boolean turboOn;
-    
+    private boolean turboOn;
+
     public Saab95(double x, double y, int direction, int nrDoors, double enginePower, Color color){
 
         super(x, y,direction);
-        this.nrDoors = nrDoors;
-        this.color = color;
-        this.enginePower = enginePower;
+        setNrDoors(nrDoors);
+        setColor(color);
+        setEnginePower(enginePower);
+        setIsBigCar(false);
 	    turboOn = false;
         modelName = "Saab95";
         stopEngine();
@@ -17,9 +18,9 @@ public class Saab95 extends Car{
     // default method
     public Saab95(double x, double y, int direction){
         super(x, y,direction);
-        nrDoors = 2;
-        color = Color.red;
-        enginePower = 125;
+        setNrDoors(2);
+        setColor(Color.RED);
+        setEnginePower(125);
         turboOn = false;
         modelName = "Saab95";
         stopEngine();
@@ -33,6 +34,8 @@ public class Saab95 extends Car{
     public void setTurboOff(){
 	    turboOn = false;
     }
+
+    public boolean getTurboOn() {return turboOn; }
 
     @Override
     public double speedFactor(){

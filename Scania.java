@@ -3,21 +3,24 @@ import java.awt.*;
 public class Scania extends Car{
     private int dumpBedAngle;
 
-    public Scania(double x, double y, int direction, int nrDoors, double enginePower, Color color, int dumpBedAngel){
+    public Scania(double x, double y, int direction, int nrDoors, double enginePower, Color color, int dumpBedAngle){
         super(x, y,direction);
-        this.nrDoors = nrDoors;
-        this.color = color;
-        this.enginePower = enginePower;
-        this.dumpBedAngle = dumpBedAngel;
+        setNrDoors(nrDoors);
+
+        setColor(color);
+        setEnginePower( enginePower);
+        setIsBigCar(true);
+        this.dumpBedAngle = dumpBedAngle;
         modelName = "Scania";
         stopEngine();
     }
     // default method
     public Scania(double x, double y, int direction){
         super(x, y,direction);
-        nrDoors = 2;
-        color = Color.green;
-        enginePower = 90;
+        setNrDoors(2);
+        setColor(Color.GREEN);
+        setEnginePower(90);
+        setIsBigCar(true);
         dumpBedAngle = 0;
         modelName = "Scania";
         stopEngine();
@@ -28,7 +31,7 @@ public class Scania extends Car{
         return 1;
     }
     public void setDumpBedAngle(int newAngle){
-        if (newAngle>=0 && newAngle<=70 && currentSpeed == 0){
+        if (newAngle>=0 && newAngle<=70 && getCurrentSpeed() == 0){
             dumpBedAngle = newAngle;
         }
     }

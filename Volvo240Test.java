@@ -28,7 +28,7 @@ class Volvo240Test {
         defaultVolvo.incrementSpeed(2);
         assertEquals(2.6,defaultVolvo.getCurrentSpeed());
         defaultVolvo.incrementSpeed(200);
-        assertEquals(defaultVolvo.enginePower,defaultVolvo.getCurrentSpeed());
+        assertEquals(defaultVolvo.getEnginePower(),defaultVolvo.getCurrentSpeed());
     }
 
     @Test

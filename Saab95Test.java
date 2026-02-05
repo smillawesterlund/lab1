@@ -21,8 +21,8 @@ class Saab95Test {
         saab.setTurboOn();
         defaultSaab.setTurboOn();
 
-        assertTrue(saab.turboOn);
-        assertTrue(defaultSaab.turboOn);
+        assertTrue(saab.getTurboOn());
+        assertTrue(defaultSaab.getTurboOn());
 
     }
 
@@ -31,8 +31,8 @@ class Saab95Test {
         saab.setTurboOff();
         defaultSaab.setTurboOff();
 
-        assertFalse(saab.turboOn);
-        assertFalse(defaultSaab.turboOn);
+        assertFalse(saab.getTurboOn());
+        assertFalse(defaultSaab.getTurboOn());
 
     }
 

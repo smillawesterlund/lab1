@@ -7,9 +7,10 @@ public class Volvo240 extends Car {
     public Volvo240(double x, double y, int direction, int nrDoors, double enginePower, Color color){
 
         super(x, y,direction);
-        this.nrDoors = nrDoors;
-        this.color = color;
-        this.enginePower = enginePower;
+        setNrDoors(nrDoors);
+        setColor(color);
+        setEnginePower(enginePower);
+        setIsBigCar(false);
         modelName = "Volvo240";
         stopEngine();
     }
@@ -17,9 +18,9 @@ public class Volvo240 extends Car {
     public Volvo240(double x, double y, int direction){
 
         super(x, y,direction);
-        nrDoors = 4;
-        color = Color.BLACK;
-        enginePower = 100;
+        setNrDoors(4);
+        setColor(Color.BLACK);
+        setEnginePower(100);
         modelName = "Volvo240";
         stopEngine();
     }
