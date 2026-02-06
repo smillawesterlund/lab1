@@ -15,19 +15,6 @@ public class Saab95 extends Car{
         modelName = "Saab95";
         stopEngine();
     }
-    /* default method
-    public Saab95(double x, double y, int direction){
-        super(x, y,direction);
-        setNrDoors(2);
-        setColor(Color.RED);
-        setEnginePower(125);
-        turboOn = false;
-        modelName = "Saab95";
-        stopEngine();
-    }
-
-     */
-
 
     public void setTurboOn(){
 	    turboOn = true;

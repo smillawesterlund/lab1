@@ -10,20 +10,6 @@ public class Scania extends Car{
         modelName = "Scania";
         stopEngine();
     }
-    /*default method
-    public Scania(double x, double y, int direction){
-        super(x, y,direction);
-        setNrDoors(2);
-        setColor(Color.GREEN);
-        setEnginePower(90);
-        setIsBigCar(true);
-        dumpBedAngle = 0;
-        modelName = "Scania";
-        stopEngine();
-    }
-
-     */
-
 
     @Override
     public double speedFactor() {
