@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class AutoServiceCenter< T extends Movable> {
+public class AutoServiceCenter<T extends Car> {
     private ArrayList<T> serviceCenter;
     private int capacity;
 

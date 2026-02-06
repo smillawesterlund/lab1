@@ -1,20 +1,16 @@
 import java.awt.*;
 
 public class Scania extends Car{
-    private int dumpBedAngle;
+    private FlatBed flatBed;
 
-    public Scania(double x, double y, int direction, int nrDoors, double enginePower, Color color, int dumpBedAngle){
-        super(x, y,direction);
-        setNrDoors(nrDoors);
+    public Scania(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color){
 
-        setColor(color);
-        setEnginePower( enginePower);
-        setIsBigCar(true);
-        this.dumpBedAngle = dumpBedAngle;
+        super(x, y, direction, nrDoors, enginePower, currentSpeed, isBigCar, color);
+        flatBed = new FlatBed(0,70);
         modelName = "Scania";
         stopEngine();
     }
-    // default method
+    /*default method
     public Scania(double x, double y, int direction){
         super(x, y,direction);
         setNrDoors(2);
@@ -26,30 +22,34 @@ public class Scania extends Car{
         stopEngine();
     }
 
+     */
+
+
     @Override
     public double speedFactor() {
         return 1;
     }
-    public void setDumpBedAngle(int newAngle){
-        if (newAngle>=0 && newAngle<=70 && getCurrentSpeed() == 0){
-            dumpBedAngle = newAngle;
-        }
+    public void raiseDumpBedAngle(int amount){
+        flatBed.raiseAngle(amount);
     }
 
-    public int getDumpBedAngle(){return dumpBedAngle;}
+    public void decreaseDumpBedAngle(int amount){
+        flatBed.decreaseAngle(amount);
+    }
+
+    public int getDumpBedAngle(){return flatBed.getAngle();}
 
     @Override
     public void startEngine() {
-        if (dumpBedAngle==0){super.startEngine();}
+        if (flatBed.isFlatbedReady()){super.startEngine();}
     }
 
     @Override
     public void gas(double amount) {
-        if ((amount < 0 || amount > 1) || dumpBedAngle!=0) {
-            //returnar inget
-            return;
+        if (flatBed.isFlatbedReady()) {
+            super.gas(amount);
         }
-        incrementSpeed(amount);
+
     }
 
 

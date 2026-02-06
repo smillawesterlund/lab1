@@ -11,15 +11,20 @@ public abstract class Car implements Movable{
     private Color color; // Color of the car
     public String modelName; // The car model name
 
-    public Car(double x, double y, int direction){
+    public Car(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color){
         this.x = x;
         this.y = y;
         this.direction = direction;
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.currentSpeed = currentSpeed;
+        this.isBigCar = isBigCar;
+        this.color = color;
     }
 
     public abstract double speedFactor();
 
-    public void incrementSpeed(double amount){
+    private void incrementSpeed(double amount){
 
         currentSpeed = currentSpeed + speedFactor() * amount;
 
@@ -28,7 +33,7 @@ public abstract class Car implements Movable{
         }
     }
 
-    public void decrementSpeed(double amount){
+    private void decrementSpeed(double amount){
 
         currentSpeed = currentSpeed - speedFactor() * amount;
 

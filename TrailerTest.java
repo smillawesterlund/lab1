@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TrailerTest {
@@ -8,16 +10,17 @@ class TrailerTest {
 
     @BeforeEach
     void setUp(){
-        trailer = new Trailer(100,100,0,2);
+        trailer = new Trailer(100,100,0,2,100,0,true,Color.GREEN,2);
     }
 
     @Test
     void addNewCar() {
-        Car newCarClose = new Volvo240(105, 103,0);
-        Car newCarFar = new Saab95(111,89,0);
-        Car newScania = new Scania(100,100,0);
 
-        trailer.openRamp();
+        Car newCarClose = new Volvo240(105, 103,0,4,125,0,false,Color.BLUE);
+        Car newCarFar = new Saab95(111,89,0,4,125,0,false,Color.BLUE);
+        Car newScania = new Scania(100,100,0,4,125,0,true,Color.BLUE);
+
+        trailer.riseFlatBedAngle(1);
         trailer.addNewCar(newCarClose);
         assertEquals(1, trailer.getCarListSize());
         //en bil ska finnas på trailern
@@ -37,7 +40,7 @@ class TrailerTest {
         assertEquals(0, trailer.getCarListSize());
         //kan inte lägga till stora bilar aka lastbilar
 
-        trailer.closeRamp();
+        trailer.decreaseFlatBedAngle(1);
         trailer.addNewCar(newCarClose);
         assertEquals(0, trailer.getCarListSize());
         //kan inte lägga till om rampen stängd
@@ -45,9 +48,9 @@ class TrailerTest {
 
     @Test
     void removeLastCar() {
-        Car smallCar = new Saab95(100,100,0);
+        Car smallCar = new Saab95(100,100,0,2,125,0,false,Color.BLUE);
 
-        trailer.openRamp();
+        trailer.riseFlatBedAngle(1);
         trailer.addNewCar(smallCar);
 
         trailer.removeLastCar();
@@ -57,13 +60,6 @@ class TrailerTest {
         assertTrue(smallCar.getX() >= trailer.getX() + 5 && smallCar.getX() <= trailer.getX() + 15);
     }
 
-    @Test
-    void openRamp() {
-        assertFalse(trailer.getRamp());
-
-        trailer.openRamp();
-        assertTrue(trailer.getRamp());
-    }
 
     @Test
     void startEngine() {
@@ -76,10 +72,10 @@ class TrailerTest {
 
     @Test
     void move() {
-        Car testCar = new Saab95(100,100,0);
-        trailer.openRamp();
+        Car testCar = new Saab95(100,100,0,2,125,0,false,Color.BLUE);
+        trailer.riseFlatBedAngle(1);
         trailer.addNewCar(testCar);
-        trailer.closeRamp();
+        trailer.decreaseFlatBedAngle(1);
         trailer.startEngine();
         trailer.gas(1);
         trailer.move();

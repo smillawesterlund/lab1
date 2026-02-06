@@ -1,10 +1,12 @@
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AutoServiceCenterTest {
 
-    AutoServiceCenter<Movable> carServiceCenter;
+    AutoServiceCenter<Car> carServiceCenter;
     AutoServiceCenter<Volvo240> volvoServiceCenter;
     AutoServiceCenter<Scania> scaniaServiceCenter;
     AutoServiceCenter<Trailer> trailerServiceCenter;
@@ -14,10 +16,10 @@ class AutoServiceCenterTest {
         carServiceCenter = new AutoServiceCenter<>(2);
         volvoServiceCenter = new AutoServiceCenter<>(3);
 
-        Trailer trailer = new Trailer(4,3,0,6);
-        Volvo240 volvo1 = new Volvo240(10,10,0);
-        Volvo240 volvo2 = new Volvo240(1,1,0);
-        Saab95 saab = new Saab95(20,20,0);
+        Trailer trailer = new Trailer(0,0,0, 2,125,0,true, Color.GREEN,8);
+        Volvo240 volvo1 = new Volvo240(10,10,0,4,125,0,false, Color.BLUE);
+        Volvo240 volvo2 = new Volvo240(1,1,0, 4,125,0,false, Color.BLUE);
+        Saab95 saab = new Saab95(1,1,0, 2,100,0,false, Color.BLUE);
         carServiceCenter.addCar(trailer);
         carServiceCenter.addCar(saab);
         //volvoServiceCenter.addCar(saab);

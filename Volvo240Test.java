@@ -7,83 +7,57 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Volvo240Test {
 
-    Volvo240 defaultVolvo;
+
     Volvo240 volvo;
 
     @BeforeEach
     void setUp(){
-        defaultVolvo = new Volvo240(100,100,0);
-        volvo = new Volvo240(100,100,0,5,101, Color.GRAY);
+
+        volvo = new Volvo240(100,100,0,5,101,0,false, Color.GRAY);
     }
 
     @Test
     void speedFactor() {
-        assertEquals(1.25,defaultVolvo.speedFactor());
         assertEquals(1.2625,volvo.speedFactor());
     }
 
-    @Test
-    void incrementSpeed() {
-        defaultVolvo.startEngine();
-        defaultVolvo.incrementSpeed(2);
-        assertEquals(2.6,defaultVolvo.getCurrentSpeed());
-        defaultVolvo.incrementSpeed(200);
-        assertEquals(defaultVolvo.getEnginePower(),defaultVolvo.getCurrentSpeed());
-    }
-
-    @Test
-    void decrementSpeed() {
-        defaultVolvo.startEngine();
-        defaultVolvo.decrementSpeed(2);
-        assertEquals(0,defaultVolvo.getCurrentSpeed());
-        defaultVolvo.incrementSpeed(200);
-        defaultVolvo.decrementSpeed(2);
-        assertEquals(97.5,defaultVolvo.getCurrentSpeed());
-
-    }
 
     @Test
     void getX() {
-        assertEquals(100,defaultVolvo.getX());
+        assertEquals(100,volvo.getX());
     }
 
     @Test
     void getY() {
-        assertEquals(100,defaultVolvo.getY());
+        assertEquals(100,volvo.getY());
     }
 
     @Test
     void getDirection() {
-        assertEquals(0,defaultVolvo.getDirection());
+        assertEquals(0,volvo.getDirection());
     }
 
     @Test
     void getNrDoors() {
-        assertEquals(4,defaultVolvo.getNrDoors());
         assertEquals(5,volvo.getNrDoors());
-
     }
 
     @Test
     void getEnginePower() {
-        assertEquals(100,defaultVolvo.getEnginePower());
         assertEquals(101,volvo.getEnginePower());
     }
 
     @Test
     void getCurrentSpeed() {
-        assertEquals(0,defaultVolvo.getCurrentSpeed());
         assertEquals(0,volvo.getCurrentSpeed());
     }
 
     @Test
     void getAndSetColor() {
-        assertEquals(Color.BLACK,defaultVolvo.getColor());
         assertEquals(Color.GRAY, volvo.getColor());
         volvo.setColor(Color.GREEN);
         assertEquals(Color.GREEN,volvo.getColor());
     }
-
 
 
     @Test
@@ -151,27 +125,27 @@ class Volvo240Test {
 
     @Test
     void gas() {
-        defaultVolvo.startEngine();
-        defaultVolvo.gas(2);
-        assertEquals(0.1,defaultVolvo.getCurrentSpeed());
+        volvo.startEngine();
+        volvo.gas(2);
+        assertEquals(0.1, volvo.getCurrentSpeed());
 
-        double speed = defaultVolvo.getCurrentSpeed();
-        defaultVolvo.gas(0.34);
-        assertTrue(speed<defaultVolvo.getCurrentSpeed());
+        double speed = volvo.getCurrentSpeed();
+        volvo.gas(0.34);
+        assertTrue(speed<volvo.getCurrentSpeed());
 
     }
 
 
     @Test
     void brake() {
-        defaultVolvo.startEngine();
-        defaultVolvo.brake(-2);
-        assertEquals(0.1, defaultVolvo.getCurrentSpeed());
+        volvo.startEngine();
+        volvo.brake(-2);
+        assertEquals(0.1, volvo.getCurrentSpeed());
 
-        double speed = defaultVolvo.getCurrentSpeed();
+        double speed = volvo.getCurrentSpeed();
 
-        defaultVolvo.brake(0.6);
-        assertTrue(speed>defaultVolvo.getCurrentSpeed());
+        volvo.brake(0.6);
+        assertTrue(speed>volvo.getCurrentSpeed());
     }
 
 }

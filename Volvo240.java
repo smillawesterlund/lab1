@@ -4,17 +4,13 @@ public class Volvo240 extends Car {
 
     public final static double trimFactor = 1.25;
     
-    public Volvo240(double x, double y, int direction, int nrDoors, double enginePower, Color color){
+    public Volvo240(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color){
 
-        super(x, y,direction);
-        setNrDoors(nrDoors);
-        setColor(color);
-        setEnginePower(enginePower);
-        setIsBigCar(false);
+        super(x, y,direction,nrDoors,enginePower,currentSpeed,isBigCar,color);
         modelName = "Volvo240";
         stopEngine();
     }
-    // default method
+    /*default method
     public Volvo240(double x, double y, int direction){
 
         super(x, y,direction);
@@ -24,6 +20,8 @@ public class Volvo240 extends Car {
         modelName = "Volvo240";
         stopEngine();
     }
+    /*
+     */
     @Override
     public double speedFactor(){
         return getEnginePower() * 0.01 * trimFactor;

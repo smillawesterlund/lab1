@@ -4,9 +4,9 @@ public class Saab95 extends Car{
 
     private boolean turboOn;
 
-    public Saab95(double x, double y, int direction, int nrDoors, double enginePower, Color color){
+    public Saab95(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color){
 
-        super(x, y,direction);
+        super(x, y,direction,nrDoors,enginePower,currentSpeed,isBigCar,color);
         setNrDoors(nrDoors);
         setColor(color);
         setEnginePower(enginePower);
@@ -15,7 +15,7 @@ public class Saab95 extends Car{
         modelName = "Saab95";
         stopEngine();
     }
-    // default method
+    /* default method
     public Saab95(double x, double y, int direction){
         super(x, y,direction);
         setNrDoors(2);
@@ -25,6 +25,8 @@ public class Saab95 extends Car{
         modelName = "Saab95";
         stopEngine();
     }
+
+     */
 
 
     public void setTurboOn(){
