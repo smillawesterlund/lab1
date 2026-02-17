@@ -19,12 +19,17 @@ public class FlatBed {
     public void raiseAngle(int amount){
             if (angle + amount < maxAngle) {
                 angle = angle + amount;
+            }else{
+                angle = maxAngle;
             }
         }
 
     public void decreaseAngle(int amount){
             if (angle - amount > 0) {
                 angle = angle - amount;
+            }
+            else{
+                angle = 0;
             }
         }
     }
