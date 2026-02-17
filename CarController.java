@@ -23,6 +23,7 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
+    AutoServiceCenter<Volvo240> volvoCenter = new AutoServiceCenter<>(4);
 
     //methods:
 
@@ -53,7 +54,7 @@ public class CarController {
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
-                System.out.println(car.getX());
+
             }
         }
     }

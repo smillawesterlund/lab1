@@ -35,8 +35,8 @@ public class CarView extends JFrame{
     JButton turnRightButton = new JButton("Turn right");
     JButton turboOnButton = new JButton("Saab Turbo on");
     JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
+    JButton liftBedButton = new JButton("Lift Bed");
+    JButton lowerBedButton = new JButton("Lower Bed");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
@@ -80,13 +80,13 @@ public class CarView extends JFrame{
         controlPanel.setLayout(new GridLayout(2,4));
 
         controlPanel.add(gasButton, 0);
-        controlPanel.add(turboOnButton, 1);
-        controlPanel.add(liftBedButton, 2);
-        controlPanel.add(brakeButton, 3);
-        controlPanel.add(turboOffButton, 4);
-        controlPanel.add(lowerBedButton, 5);
-        controlPanel.add(turnLeftButton, 6);
-        controlPanel.add(turnRightButton, 7);
+        controlPanel.add(turnLeftButton, 1);
+        controlPanel.add(turboOnButton, 2);
+        controlPanel.add(lowerBedButton, 3);
+        controlPanel.add(brakeButton, 4);
+        controlPanel.add(turnRightButton, 5);
+        controlPanel.add(turboOffButton, 6);
+        controlPanel.add(liftBedButton, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
