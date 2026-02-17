@@ -31,8 +31,8 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240(0,0,0,4,100,0,false,Color.GREEN));
-        cc.cars.add(new Saab95(100,0,0,2,125,0,false,Color.pink));
-        cc.cars.add(new Scania(200,0,0,2,90,0,true,Color.red));
+        cc.cars.add(new Saab95(0,0,0,2,125,0,false,Color.pink));
+        cc.cars.add(new Scania(0,0,0,2,90,0,true,Color.red));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -53,6 +53,7 @@ public class CarController {
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
+                System.out.println(car.getX());
             }
         }
     }
@@ -97,6 +98,22 @@ public class CarController {
             }
         }
     }
-    void
+    void turboOn(){
+        for(Car car:cars){
+            if(car instanceof Saab95){
+                Saab95 saab95 = (Saab95) car;
+                saab95.setTurboOn();
+            }
+        }
+
+    }
+    void turboOff(){
+        for(Car car:cars){
+            if(car instanceof Saab95){
+                Saab95 saab95 = (Saab95) car;
+                saab95.setTurboOff();
+            }
+        }
+    }
 
 }

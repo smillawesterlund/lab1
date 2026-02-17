@@ -14,22 +14,23 @@ public class DrawPanel extends JPanel{
     BufferedImage saabImage;
     BufferedImage scaniaImage;
     BufferedImage volvoWorkshopImage;
+    BufferedImage bilmattaImage;
     // To keep track of a single car's position
     Point volvoPoint = new Point();
     Point saabPoint = new Point();
     Point scaniaPoint = new Point();
 
 
-    Point volvoWorkshopPoint = new Point(300,300);
+    Point volvoWorkshopPoint = new Point(650,380);
 
     // TODO: Make this general for all cars
     void moveit(int x, int y){
         volvoPoint.x = x;
         volvoPoint.y = y;
         saabPoint.x = x;
-        saabPoint.y = y;
+        saabPoint.y = y +100;
         scaniaPoint.x = x;
-        scaniaPoint.y = y;
+        scaniaPoint.y = y +200;
 
     }
 
@@ -46,6 +47,7 @@ public class DrawPanel extends JPanel{
 
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
+            bilmattaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/bilmatta.jpg"));
             scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
             saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
@@ -62,6 +64,7 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.drawImage(bilmattaImage,0,0,null);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null);
         g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);// see javadoc for more info on the parameters
