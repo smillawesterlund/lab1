@@ -96,15 +96,15 @@ public abstract class Car implements Movable{
         }else if (direction == 3){
             x = x-currentSpeed;
     }}
-    /*
+
     public void collision(){
-        if (getX() || getY() == (0 || 800)){
+        if (getX() == 0 || getX() == 800 || getY() == 0 || getY() == 540){
             turnLeft();
             turnLeft();
         }
     }
 
-     */
+
 
     @Override
     public void turnLeft() {

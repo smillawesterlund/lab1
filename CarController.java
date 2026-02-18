@@ -54,6 +54,10 @@ public class CarController {
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
+               if (car.getX() <= 0 || car.getX() >= 700 || car.getY() <= 0 || car.getY() >= 560){
+                   car.turnLeft();
+                   car.turnLeft();
+               }
 
             }
         }
