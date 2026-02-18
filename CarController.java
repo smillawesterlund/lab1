@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /*
  * This class represents the Controller part in the MVC pattern.
@@ -31,9 +32,9 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240(0,0,0,4,100,0,false,Color.GREEN));
-        cc.cars.add(new Saab95(0,0,0,2,125,0,false,Color.pink));
-        cc.cars.add(new Scania(0,0,0,2,90,0,true,Color.red));
+        cc.cars.add(new Volvo240(10,10,1,4,100,0,false,Color.GREEN));
+        cc.cars.add(new Saab95(10,10,1,2,125,0,false,Color.pink));
+        cc.cars.add(new Scania(10,10,1,2,90,0,true,Color.red));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -47,21 +48,33 @@ public class CarController {
      * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-           for (Car car : cars) {
-                car.move();
-                int x = (int) Math.round(car.getX());
-                int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(x, y);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
-               if (car.getX() <= 0 || car.getX() >= 700 || car.getY() <= 0 || car.getY() >= 560){
-                   car.turnLeft();
-                   car.turnLeft();
-               }
+            for (Iterator<Car> it = cars.iterator(); it.hasNext(); ) {
+                Car car = it.next();
 
+                if (car instanceof Volvo240) {
+                    Volvo240 volvo = (Volvo240) car;
+                    if (volvo.getX() >= 650 && volvo.getY() >= 380 && volvo.getY() <= 480) {
+                        volvoCenter.addCar(volvo);
+                        volvo.stopEngine();
+                        volvo.setX(650);
+                        volvo.setY(380);
+                        frame.drawPanel.moveit(volvo);
+                        it.remove();
+                        continue; // hoppa över move() för volvon
+                    }
+                }
+
+                car.move();
+                if (car.getX() <= 0 || car.getX() >= 700 || car.getY() <= 0 || car.getY() >= 500) {
+                    car.turnLeft();
+                    car.turnLeft();
+                }
+                frame.drawPanel.moveit(car);
+                frame.drawPanel.repaint();
             }
         }
     }
+
 
     // Calls the gas method for each car once
     void gas(int amount) {
@@ -120,5 +133,14 @@ public class CarController {
             }
         }
     }
-
+    void startEngine() {
+        for (Car car : cars) {
+            car.startEngine();
+        }
+    }
+    void stopEngine() {
+        for (Car car : cars) {
+            car.stopEngine();
+        }
+    }
 }

@@ -25,13 +25,13 @@ public abstract class Car implements Movable{
     public abstract double speedFactor();
 
     private void incrementSpeed(double amount){
-
-        currentSpeed = currentSpeed + speedFactor() * amount;
+        if(currentSpeed != 0){
+           currentSpeed =currentSpeed + speedFactor() * amount;
 
         if (currentSpeed > enginePower) {
             currentSpeed = enginePower;
         }
-    }
+    }}
 
     private void decrementSpeed(double amount){
 
@@ -96,14 +96,6 @@ public abstract class Car implements Movable{
         }else if (direction == 3){
             x = x-currentSpeed;
     }}
-
-    public void collision(){
-        if (getX() == 0 || getX() == 800 || getY() == 0 || getY() == 540){
-            turnLeft();
-            turnLeft();
-        }
-    }
-
 
 
     @Override
