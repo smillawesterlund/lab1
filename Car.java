@@ -22,7 +22,7 @@ public abstract class Car implements Movable{
         this.color = color;
     }
 
-    public abstract double speedFactor();
+    protected abstract double speedFactor();
 
     private void incrementSpeed(double amount){
         if(currentSpeed != 0){

@@ -50,6 +50,8 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (Iterator<Car> it = cars.iterator(); it.hasNext(); ) {
                 Car car = it.next();
+                int x = (int) Math.round(car.getX());
+                int y = (int) Math.round(car.getY());
 
                 if (car instanceof Volvo240) {
                     Volvo240 volvo = (Volvo240) car;
@@ -58,7 +60,7 @@ public class CarController {
                         volvo.stopEngine();
                         volvo.setX(650);
                         volvo.setY(380);
-                        frame.drawPanel.moveit(volvo);
+                        frame.drawPanel.moveit(volvo.modelName,x,y);
                         it.remove();
                         continue; // hoppa över move() för volvon
                     }
@@ -69,7 +71,7 @@ public class CarController {
                     car.turnLeft();
                     car.turnLeft();
                 }
-                frame.drawPanel.moveit(car);
+                frame.drawPanel.moveit(car.modelName,x,y);
                 frame.drawPanel.repaint();
             }
         }

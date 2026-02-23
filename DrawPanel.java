@@ -23,17 +23,14 @@ public class DrawPanel extends JPanel{
 
     Point volvoWorkshopPoint = new Point(650,380);
 
-    // TODO: Make this general for all cars
-    void moveit(Car car){
-        int x = (int) Math.round(car.getX());
-        int y = (int) Math.round(car.getY());
-        if (car instanceof Volvo240) {
+    void moveit(String type, int x, int y){
+        if (type.equals("Volvo240")) {
             volvoPoint.x = x;
             volvoPoint.y = y;
-        } else if (car instanceof Saab95) {
+        } else if (type.equals("Saab95")) {
             saabPoint.x = x;
             saabPoint.y = y+100;
-        } else if (car instanceof Scania) {
+        } else if (type.equals("Scania")) {
             scaniaPoint.x = x;
             scaniaPoint.y = y+200;
         }
