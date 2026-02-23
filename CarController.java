@@ -26,7 +26,7 @@ public class CarController {
     ArrayList<Car> cars = new ArrayList<>();
     AutoServiceCenter<Volvo240> volvoCenter = new AutoServiceCenter<>(4);
 
-    //methods:
+    //methods: hej
 
     public static void main(String[] args) {
         // Instance of this class
