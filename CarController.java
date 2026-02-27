@@ -21,7 +21,7 @@ public class CarController implements CarCommands {
     private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
-    CarView frame;
+    private CarView frame;
 
     private Simulation simulation = new Simulation();
 
@@ -47,7 +47,7 @@ public class CarController implements CarCommands {
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
 
-                frame.drawPanel.moveit(car.modelName,x,y);
+                frame.drawPanel.updateCars(simulation.getCars());
                 frame.drawPanel.repaint();
             }
         }

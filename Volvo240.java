@@ -1,4 +1,6 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.IOException;
 
 public class Volvo240 extends Car {
 
@@ -9,6 +11,13 @@ public class Volvo240 extends Car {
         super(x, y,direction,nrDoors,enginePower,currentSpeed,isBigCar,color);
         modelName = "Volvo240";
         stopEngine();
+        try {
+            setImg(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     @Override

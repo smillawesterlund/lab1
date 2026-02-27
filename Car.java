@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class Car implements Movable{
 
@@ -10,6 +11,7 @@ public abstract class Car implements Movable{
     private boolean isBigCar;
     private Color color; // Color of the car
     public String modelName; // The car model name
+    private BufferedImage img;
 
     public Car(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color){
         this.x = x;
@@ -60,6 +62,8 @@ public abstract class Car implements Movable{
 
     public boolean getIsBigCar(){return isBigCar;}
 
+    public BufferedImage getImg(){return img;}
+
 
     // set-methods
     public void setNrDoors(int nr){nrDoors = nr;}
@@ -82,8 +86,11 @@ public abstract class Car implements Movable{
 
     public void setDirection(int newDirection){direction = newDirection;}
 
+    public void setImg(BufferedImage img) {
+        this.img = img;
+    }
 
-// direction kan vara 0,1,2,3 där 0 och 2 är uppåt respektive neråt, 3 och 1 är vänster respektive höger
+    // direction kan vara 0,1,2,3 där 0 och 2 är uppåt respektive neråt, 3 och 1 är vänster respektive höger
 
     @Override
     public void move() {

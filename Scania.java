@@ -1,4 +1,6 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.IOException;
 
 public class Scania extends Car implements LiftableFlatBed{
     private FlatBed flatBed;
@@ -9,6 +11,12 @@ public class Scania extends Car implements LiftableFlatBed{
         flatBed = new FlatBed(0,70);
         modelName = "Scania";
         stopEngine();
+        try {
+            setImg(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
