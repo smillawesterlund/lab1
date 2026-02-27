@@ -21,6 +21,8 @@ public class DrawPanel extends JPanel{
     Point scaniaPoint = new Point();
 
 
+
+
     Point volvoWorkshopPoint = new Point(650,380);
 
     void moveit(String type, int x, int y){
@@ -29,10 +31,10 @@ public class DrawPanel extends JPanel{
             volvoPoint.y = y;
         } else if (type.equals("Saab95")) {
             saabPoint.x = x;
-            saabPoint.y = y+100;
+            saabPoint.y = y;
         } else if (type.equals("Scania")) {
             scaniaPoint.x = x;
-            scaniaPoint.y = y+200;
+            scaniaPoint.y = y;
         }
     }
 
@@ -68,9 +70,10 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(bilmattaImage,0,0,null);
+        g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null);
         g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);// see javadoc for more info on the parameters
-        g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+
     }
 }

@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 extends Car{
+public class Saab95 extends Car implements Turboable{
 
     private boolean turboOn;
 
@@ -16,11 +16,11 @@ public class Saab95 extends Car{
         stopEngine();
     }
 
-    public void setTurboOn(){
+    public void turboOn(){
 	    turboOn = true;
     }
 
-    public void setTurboOff(){
+    public void turboOff(){
 	    turboOn = false;
     }
 

@@ -13,8 +13,8 @@ class AutoServiceCenterTest {
 
     @Test
     void addCarAndPickUpCar() {
-        carServiceCenter = new AutoServiceCenter<>(2);
-        volvoServiceCenter = new AutoServiceCenter<>(3);
+        carServiceCenter = new AutoServiceCenter<>(0,0,2);
+        volvoServiceCenter = new AutoServiceCenter<>(0,0,3);
 
         Trailer trailer = new Trailer(0,0,0, 2,125,0,true, Color.GREEN,8);
         Volvo240 volvo1 = new Volvo240(10,10,0,4,125,0,false, Color.BLUE);

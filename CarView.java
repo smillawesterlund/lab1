@@ -18,7 +18,7 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
+    CarCommands carC;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -42,22 +42,39 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
+    public CarView(String framename, CarCommands cc){
         this.carC = cc;
         initComponents(framename);
     }
-
-    // Sets everything in place and fits everything
-    // TODO: Take a good look and make sure you understand how these methods and components work
     private void initComponents(String title) {
+        preSetUpFrame(title);
+        setUpGasPanel();
+        setUpButtonPanel();
+        setUpActionlistners();
+        setUpFrame();
 
+    }
+    private void preSetUpFrame(String title){
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X, Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
+        this.pack();
+    }
+    private void setUpFrame(){
 
 
+        // Get the computer screen resolution
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        // Center the frame
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        // Make the frame visible
+        this.setVisible(true);
+        // Make sure the frame exits when "x" is pressed
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    private void setUpGasPanel(){
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
@@ -69,6 +86,9 @@ public class CarView extends JFrame{
                 gasAmount = (int) ((JSpinner) e.getSource()).getValue();
             }
         });
+    }
+    private void setUpButtonPanel(){
+
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
@@ -101,9 +121,8 @@ public class CarView extends JFrame{
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
         this.add(stopButton);
-
-        // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
+    }
+    private void setUpActionlistners(){
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,16 +178,7 @@ public class CarView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){carC.turboOn();}
         });
-        // Make the frame pack all it's components by respecting the sizes if possible.
-        this.pack();
-
-        // Get the computer screen resolution
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        // Center the frame
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        // Make the frame visible
-        this.setVisible(true);
-        // Make sure the frame exits when "x" is pressed
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+
 }
