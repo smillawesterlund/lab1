@@ -6,10 +6,10 @@ public class Volvo240 extends Car {
 
     private final static double trimFactor = 1.25;
     
-    public Volvo240(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color){
+    public Volvo240(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color, String modelName){
 
-        super(x, y,direction,nrDoors,enginePower,currentSpeed,isBigCar,color);
-        modelName = "Volvo240";
+        super(x, y,direction,nrDoors,enginePower,currentSpeed,isBigCar,color,modelName);
+
         stopEngine();
         try {
             setImg(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));

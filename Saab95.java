@@ -6,15 +6,10 @@ public class Saab95 extends Car implements Turboable{
 
     private boolean turboOn;
 
-    public Saab95(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color){
+    public Saab95(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color, String modelName){
 
-        super(x, y,direction,nrDoors,enginePower,currentSpeed,isBigCar,color);
-        //setNrDoors(nrDoors);
-        //setColor(color);
-        //setEnginePower(enginePower);
-        //setIsBigCar(false);
+        super(x, y,direction,nrDoors,enginePower,currentSpeed,isBigCar,color, modelName);
 	    turboOn = false;
-        modelName = "Saab95";
         stopEngine();
         try {
             setImg(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));

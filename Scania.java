@@ -5,11 +5,10 @@ import java.io.IOException;
 public class Scania extends Car implements LiftableFlatBed{
     private FlatBed flatBed;
 
-    public Scania(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color){
+    public Scania(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color, String modelName){
 
-        super(x, y, direction, nrDoors, enginePower, currentSpeed, isBigCar, color);
+        super(x, y, direction, nrDoors, enginePower, currentSpeed, isBigCar, color, modelName);
         flatBed = new FlatBed(0,70);
-        modelName = "Scania";
         stopEngine();
         try {
             setImg(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));

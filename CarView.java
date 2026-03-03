@@ -179,6 +179,4 @@ public class CarView extends JFrame{
             public void actionPerformed(ActionEvent e){carC.turboOn();}
         });
     }
-
-
 }

@@ -9,8 +9,8 @@ public class Trailer extends Car{
     private final int capacity;
     private Random rand = new Random();
 
-    public Trailer(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color, int capacity){
-        super(x, y,direction,nrDoors,enginePower,currentSpeed,isBigCar,color);
+    public Trailer(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color, String modelName, int capacity){
+        super(x, y,direction,nrDoors,enginePower,currentSpeed,isBigCar,color,modelName);
         flatBed = new FlatBed(0,1);
         carList = new ArrayList<>(6);
         this.capacity = capacity;

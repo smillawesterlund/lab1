@@ -1,9 +1,6 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /*
  * This class represents the Controller part in the MVC pattern.
@@ -18,24 +15,23 @@ public class CarController implements CarCommands {
     private final int delay = 50;
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
+
 
     // The frame that represents this instance View of the MVC pattern
     private CarView frame;
 
-    private Simulation simulation = new Simulation();
+    private Simulation simulation;
 
-
-    public static void main(String[] args) {
-        // Instance of this class
-        CarController cc = new CarController();
-
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
-
-        // Start the timer
-        cc.timer.start();
+    public CarController(Simulation sim){
+        this.simulation = sim;
     }
+
+    public void start(){
+        Timer timer = new Timer(delay, new TimerListener());
+        timer.start();
+    }
+
+
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
@@ -43,82 +39,77 @@ public class CarController implements CarCommands {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             simulation.update();
-            for(Car car: simulation.getCars()){
-                int x = (int) Math.round(car.getX());
-                int y = (int) Math.round(car.getY());
-
-                frame.drawPanel.updateCars(simulation.getCars());
-                frame.drawPanel.repaint();
-            }
+            //frame.drawPanel.repaint();
         }
     }
 
 
-    // Calls the gas method for each car once
-    public void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Car car : simulation.getCars()) {
-            car.gas(gas);
+
+// Calls the gas method for each car once
+public void gas(int amount) {
+    double gas = ((double) amount) / 100;
+    for (Car car : simulation.getCars()) {
+        car.gas(gas);
+    }
+}
+public void brake(int amount) {
+    double brake = ((double) amount) / 100;
+    for (Car car : simulation.getCars()) {
+        car.brake(brake);
+    }
+}
+public void turnLeft(){
+    for (Car car : simulation.getCars()) {
+        car.turnLeft();
+    }
+}
+public void turnRight(){
+    for (Car car : simulation.getCars()) {
+        car.turnRight();
+    }
+}
+
+public void liftBed(){
+    for(Car car: simulation.getCars()){
+        if (car instanceof LiftableFlatBed){
+            LiftableFlatBed c = (LiftableFlatBed) car;
+            c.liftBed();
         }
     }
-    public void brake(int amount) {
-        double brake = ((double) amount) / 100;
-        for (Car car : simulation.getCars()) {
-            car.brake(brake);
-            }
-    }
-    public void turnLeft(){
-        for (Car car : simulation.getCars()) {
-            car.turnLeft();
+}
+public void lowerBed(){
+    for(Car car: simulation.getCars()){
+        if (car instanceof LiftableFlatBed){
+            LiftableFlatBed c = (LiftableFlatBed) car;
+            c.lowerBed();
         }
     }
-    public void turnRight(){
-        for (Car car : simulation.getCars()) {
-            car.turnRight();
+}
+public void turboOn(){
+    for(Car car:simulation.getCars()){
+        if(car instanceof Turboable){
+            Turboable c = (Turboable) car;
+            c.turboOn();
         }
     }
 
-    public void liftBed(){
-        for(Car car: simulation.getCars()){
-            if (car instanceof LiftableFlatBed){
-                LiftableFlatBed c = (LiftableFlatBed) car;
-                c.liftBed();
-            }
+}
+public void turboOff(){
+    for(Car car:simulation.getCars()){
+        if(car instanceof Turboable){
+            Turboable c = (Turboable) car;
+            c.turboOff();
         }
     }
-    public void lowerBed(){
-        for(Car car: simulation.getCars()){
-            if (car instanceof LiftableFlatBed){
-                LiftableFlatBed c = (LiftableFlatBed) car;
-                c.lowerBed();
-            }
-        }
+}
+public void startEngine() {
+    for (Car car : simulation.getCars()) {
+        car.startEngine();
     }
-    public void turboOn(){
-        for(Car car:simulation.getCars()){
-            if(car instanceof Turboable){
-                Turboable c = (Turboable) car;
-                c.turboOn();
-            }
-        }
-
+}
+public void stopEngine() {
+    for (Car car : simulation.getCars()) {
+        car.stopEngine();
     }
-    public void turboOff(){
-        for(Car car:simulation.getCars()){
-            if(car instanceof Turboable){
-                Turboable c = (Turboable) car;
-                c.turboOff();
-            }
-        }
-    }
-    public void startEngine() {
-        for (Car car : simulation.getCars()) {
-            car.startEngine();
-        }
-    }
-    public void stopEngine() {
-        for (Car car : simulation.getCars()) {
-            car.stopEngine();
-        }
-    }
+}
 }

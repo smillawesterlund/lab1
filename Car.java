@@ -10,10 +10,10 @@ public abstract class Car implements Movable{
     private double currentSpeed; // The current speed of the car
     private boolean isBigCar;
     private Color color; // Color of the car
-    public String modelName; // The car model name
+    private String modelName; // The car model name
     private BufferedImage img;
 
-    public Car(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color){
+    public Car(double x, double y, int direction, int nrDoors, double enginePower, double currentSpeed, boolean isBigCar, Color color, String modelName){
         this.x = x;
         this.y = y;
         this.direction = direction;
@@ -22,6 +22,7 @@ public abstract class Car implements Movable{
         this.currentSpeed = currentSpeed;
         this.isBigCar = isBigCar;
         this.color = color;
+        this.modelName=modelName;
     }
 
     protected abstract double speedFactor();
@@ -64,6 +65,7 @@ public abstract class Car implements Movable{
 
     public BufferedImage getImg(){return img;}
 
+    public String getModelName() {return modelName;}
 
     // set-methods
     public void setNrDoors(int nr){nrDoors = nr;}
@@ -86,12 +88,10 @@ public abstract class Car implements Movable{
 
     public void setDirection(int newDirection){direction = newDirection;}
 
-    public void setImg(BufferedImage img) {
-        this.img = img;
-    }
+    public void setImg(BufferedImage img) {this.img = img;}
+
 
     // direction kan vara 0,1,2,3 där 0 och 2 är uppåt respektive neråt, 3 och 1 är vänster respektive höger
-
     @Override
     public void move() {
         if (direction == 0){
