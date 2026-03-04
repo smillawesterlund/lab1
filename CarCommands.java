@@ -9,4 +9,6 @@ public interface CarCommands {
     void turboOff();
     void startEngine();
     void stopEngine();
+    void addCar();
+    void removeCar();
 }

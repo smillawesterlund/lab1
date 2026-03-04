@@ -5,7 +5,7 @@ public class Simulation implements Subject{
 
     private ArrayList<Car> cars;
     private AutoServiceCenter<Volvo240> volvoCenter;
-
+    private final int MAX_CAR = 10;
     private ArrayList<Observer> observers = new ArrayList<>();
 
 
@@ -21,10 +21,18 @@ public class Simulation implements Subject{
     }
 
     public void addCar(Car car){
+        if (cars.size() >= MAX_CAR) return;
         cars.add(car);
     }
+
     public void removeCar(Car car){
         cars.remove(car);
+    }
+
+    public void removeLastCar() {
+        if (!cars.isEmpty()) {
+            cars.removeLast();
+        }
     }
 
     public void update(){

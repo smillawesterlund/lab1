@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -111,5 +112,13 @@ public void stopEngine() {
     for (Car car : simulation.getCars()) {
         car.stopEngine();
     }
+}
+//FIXA behöver en factory som skapar en random bil
+public void addCar(){
+        simulation.addCar(Factory.createRandomCar());
+}
+
+public void removeCar(){
+        simulation.removeLastCar();
 }
 }
