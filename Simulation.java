@@ -14,9 +14,9 @@ public class Simulation implements Subject{
         cars = new ArrayList<>();
         volvoCenter = new AutoServiceCenter<>(650,380,4);
 
-        cars.add(new Volvo240(10,10,1,4,100,0,false, Color.GREEN, "Volvo240"));
-        cars.add(new Saab95(10,100,1,2,125,0,false,Color.pink,"Saab95"));
-        cars.add(new Scania(10,200,1,2,90,0,true,Color.red, "Scania"));
+        cars.add(CarFactory.createVolvo());
+        cars.add(CarFactory.createSaab());
+        cars.add(CarFactory.createScania());
 
     }
 
@@ -67,7 +67,7 @@ public class Simulation implements Subject{
             }
         }
     }
-    public ArrayList<Car> getCars(){return cars;}
+    public ArrayList<Car> getCars(){return new ArrayList<>(cars) ;}
 
 
     @Override

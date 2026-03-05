@@ -18,36 +18,38 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     // The controller member
-    CarCommands carC;
+    private CarCommands carC;
 
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    private DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
-    JPanel controlPanel = new JPanel();
+    private JPanel controlPanel = new JPanel();
 
-    JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
-    int gasAmount = 0;
-    JLabel gasLabel = new JLabel("Amount of gas");
+    private JPanel gasPanel = new JPanel();
+    private JSpinner gasSpinner = new JSpinner();
+    private int gasAmount = 0;
+    private JLabel gasLabel = new JLabel("Amount of gas");
 
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turnLeftButton = new JButton("Left");
-    JButton turnRightButton = new JButton("Right");
-    JButton turboOnButton = new JButton("Turbo on");
-    JButton turboOffButton = new JButton("Turbo off");
-    JButton liftBedButton = new JButton("Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Bed");
-    JButton addCarButton = new JButton("Add car");
-    JButton removeCarButton = new JButton("Remove car");
+    private JButton gasButton = new JButton("Gas");
+    private JButton brakeButton = new JButton("Brake");
+    private JButton turnLeftButton = new JButton("Left");
+    private JButton turnRightButton = new JButton("Right");
+    private JButton turboOnButton = new JButton("Turbo on");
+    private JButton turboOffButton = new JButton("Turbo off");
+    private JButton liftBedButton = new JButton("Lift Bed");
+    private JButton lowerBedButton = new JButton("Lower Bed");
+    private JButton addCarButton = new JButton("Add car");
+    private JButton removeCarButton = new JButton("Remove car");
 
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
+    private JButton startButton = new JButton("Start all cars");
+    private JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
     public CarView(String framename, CarCommands cc){
         this.carC = cc;
         initComponents(framename);
     }
+    public DrawPanel getDrawPanel(){return drawPanel;}
+
     private void initComponents(String title) {
         preSetUpFrame(title);
         setUpGasPanel();

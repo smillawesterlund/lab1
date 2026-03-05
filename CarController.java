@@ -16,23 +16,18 @@ public class CarController implements CarCommands {
     private final int delay = 50;
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
-
-
-    // The frame that represents this instance View of the MVC pattern
-    private CarView frame;
+    Timer timer;
 
     private Simulation simulation;
 
     public CarController(Simulation sim){
         this.simulation = sim;
+        timer = new Timer(delay, new TimerListener());
     }
 
     public void start(){
-        Timer timer = new Timer(delay, new TimerListener());
         timer.start();
     }
-
-
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
@@ -40,7 +35,6 @@ public class CarController implements CarCommands {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             simulation.update();
-            //frame.drawPanel.repaint();
         }
     }
 
@@ -115,7 +109,7 @@ public void stopEngine() {
 }
 //FIXA behöver en factory som skapar en random bil
 public void addCar(){
-        simulation.addCar(Factory.createRandomCar());
+        simulation.addCar(CarFactory.createRandomCar());
 }
 
 public void removeCar(){
